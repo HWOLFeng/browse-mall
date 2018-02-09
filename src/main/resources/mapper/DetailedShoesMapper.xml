@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hwolf.mapper.DetailedShoesMapper">
+    <resultMap id="BaseResultMap" type="cn.hwolf.entity.DetailedShoes" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="shoe_name" property="shoeName" jdbcType="VARCHAR" />
+        <result column="shoe_category" property="shoeCategory" jdbcType="VARCHAR" />
+        <result column="shoe_price" property="shoePrice" jdbcType="DECIMAL" />
+        <result column="shoe_style" property="shoeStyle" jdbcType="VARCHAR" />
+        <result column="name_code" property="nameCode" jdbcType="INTEGER" />
+        <result column="shoe_code" property="shoeCode" jdbcType="INTEGER" />
+        <result column="click_volume" property="clickVolume" jdbcType="INTEGER" />
+        <result column="sales_volume" property="salesVolume" jdbcType="INTEGER" />
+        <result column="popularity" property="popularity" jdbcType="INTEGER" />
+        <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
+        <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+        <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, shoe_name, shoe_category, shoe_price, shoe_style, name_code, shoe_code, click_volume,
+        sales_volume, popularity, is_deleted, gmt_modified, gmt_create
+    </sql>
+    <!-- 开启二级缓存 -->
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
+
+    <!--resultMap="BaseResultMap"-->
+    <select id="selectListByLogic" resultType="cn.hwolf.entity.DetailedShoes">
+      SELECT * FROM detailed_shoes
+      WHERE is_deleted = #{isDeleted}
+    </select>
+</mapper>
