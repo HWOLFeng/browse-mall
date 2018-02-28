@@ -4,6 +4,7 @@ import cn.hwolf.entity.SimpleShoes;
 import cn.hwolf.mapper.SimpleShoesMapper;
 import cn.hwolf.service.SimpleShoesService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,5 +17,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SimpleShoesServiceImpl extends ServiceImpl<SimpleShoesMapper, SimpleShoes> implements SimpleShoesService {
+    @Autowired
+    private SimpleShoesMapper simpleShoesMapper;
 
 }
